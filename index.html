@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="GoodKubiceek — Modern portfolio Roblox, Unity, Python, Lua and C# development." />
+  <title>GoodKubiceek — Developer Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #07080b;
+      --card: rgba(18, 20, 26, .72);
+      --text: #f5f7fa;
+      --muted: #969ca8;
+      --line: rgba(255,255,255,.08);
+      --accent: #3b82f6;
+      --accent-2: #60a5fa;
+      --max: 1120px;
+      --radius: 20px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 80% 0%, rgba(59,130,246,.12), transparent 32%), radial-gradient(circle at 0% 25%, rgba(59,130,246,.05), transparent 25%), var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+
+    .nav-wrap { position: fixed; top: 18px; left: 0; width: 100%; z-index: 100; display: flex; justify-content: center; }
+    nav { display: flex; align-items: center; gap: 4px; padding: 6px; border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 99px; background: rgba(10, 14, 23, 0.85); backdrop-filter: blur(16px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+
+    .nav-links { display: flex; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 7px 16px; border-radius: 99px; color: var(--muted); font-size: 13px; font-weight: 500; transition: all 0.3s ease; }
+    .nav-links a.active { background: var(--accent); color: #ffffff; }
+    .nav-links a:hover:not(.active) { color: #ffffff; background: rgba(59, 130, 246, 0.15); }
+
+    .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 150px 0 100px; }
+    .hero::before { content: ""; position: absolute; width: 500px; height: 500px; left: 50%; top: 35%; transform: translate(-50%, -50%); background: var(--accent); filter: blur(180px); opacity: .12; pointer-events: none; }
+    h1 { max-width: 900px; font-size: clamp(54px, 8vw, 100px); line-height: .94; letter-spacing: -.07em; font-weight: 850; }
+    h1 .gradient { background: linear-gradient(100deg, #fff 0%, #fff 28%, #93c5fd 72%, #3b82f6 100%); -webkit-background-clip: text; color: transparent; }
+    .hero-text { max-width: 650px; color: var(--muted); font-size: 18px; margin-top: 28px; }
+    .hero-actions { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 13px 18px; border-radius: 12px; border: 1px solid var(--line); font-size: 14px; font-weight: 700; transition: .2s ease; }
+    .btn-primary { background: #3b82f6; color: #ffffff; border-color: transparent; }
+    .btn-secondary { color: #d9dce3; background: rgba(255,255,255,.025); }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(59,130,246,.4); }
+
+    section { padding: 110px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 36px; }
+    .section-label { color: var(--accent-2); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .16em; margin-bottom: 9px; }
+    h2 { font-size: clamp(32px, 5vw, 52px); line-height: 1; letter-spacing: -.05em; }
+    .section-desc { max-width: 430px; color: var(--muted); font-size: 14px; }
+
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { position: relative; min-height: 300px; padding: 26px; border: 1px solid var(--line); border-radius: var(--radius); background: radial-gradient(circle at 90% 0%, rgba(59,130,246,.12), transparent 35%), var(--card); overflow: hidden; transition: .25s ease; }
+    .project:hover { transform: translateY(-5px); border-color: rgba(59,130,246,.35); }
+    .project-number { color: #707582; font-size: 12px; font-weight: 800; letter-spacing: .1em; }
+    .project h3 { font-size: 27px; letter-spacing: -.04em; margin-top: 50px; }
+    .project p { color: var(--muted); font-size: 14px; margin-top: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
+    .tag { padding: 6px 9px; border: 1px solid var(--line); border-radius: 8px; color: #b9bec8; background: rgba(255,255,255,.025); font-size: 11px; }
+
+    .skills { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+    .skill { padding: 22px 18px; border: 1px solid var(--line); border-radius: 15px; background: rgba(255,255,255,.025); transition: .2s ease; }
+    .skill:hover { background: rgba(255,255,255,.045); transform: translateY(-3px); }
+    .skill-icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; background: rgba(59,130,246,.12); color: #93c5fd; font-weight: 800; margin-bottom: 16px; }
+    .skill strong { display: block; font-size: 14px; }
+    .skill small { color: var(--muted); font-size: 12px; }
+
+    .about-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px; }
+    .about-card { padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+    .about-card h3 { font-size: 22px; margin-bottom: 16px; color: #fff; }
+    .about-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-item { padding: 16px; border-radius: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--line); }
+    .stat-item strong { display: block; font-size: 18px; color: var(--accent); }
+    .stat-item span { font-size: 12px; color: var(--muted); }
+
+    footer { padding: 30px 0 45px; color: #656b76; font-size: 12px; text-align: center; }
+
+    @media (max-width: 800px) { .nav-links { display: none; } nav { width: calc(100% - 24px); border-radius: 16px; justify-content: center; } .projects, .about-grid { grid-template-columns: 1fr; } .skills { grid-template-columns: repeat(2, 1fr); } .section-head { display: block; } section { padding: 80px 0; } }
+  </style>
+</head>
+
+<body>
+
+  <div class="nav-wrap">
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <h1>Building <span class="gradient">digital projects</span> that matter.</h1>
+        <p class="hero-text">I am a developer focused on Roblox, Unity, web development, and custom backend systems. I love clean design, functional solutions, and attention to detail.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projects">View Projects →</a>
+          <a class="btn btn-secondary" href="#about">About Me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="section-label">Selected work</div><h2>Featured Projects</h2></div>
+          <p class="section-desc">A few selected projects I am currently working on or have built.</p>
+        </div>
+        <div class="projects">
+          <article class="project"><div class="project-number">01 / ROBLOX</div><h3>Roblox Development</h3><p>Game systems, custom vehicles, interactions, UI design, and advanced Lua solutions.</p><div class="tags"><span class="tag">Lua</span><span class="tag">Roblox Studio</span></div></article>
+          <article class="project"><div class="project-number">02 / UNITY</div><h3>Unity Development</h3><p>Advanced game development, physics-based simulations, C# scripting, and interactive experiences.</p><div class="tags"><span class="tag">Unity</span><span class="tag">C#</span></div></article>
+          <article class="project"><div class="project-number">03 / WEB</div><h3>Modern Websites</h3><p>Clean, high-performance, and responsive web applications with a focus on UI.</p><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div></article>
+          <article class="project"><div class="project-number">04 / AUTOMATION</div><h3>Discord & Python</h3><p>Custom Discord bots, workflow automation tools, and API integrations.</p><div class="tags"><span class="tag">Python</span><span class="tag">Discord</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">Toolkit</div><h2>Technologies</h2></div><p class="section-desc">Tools and technologies I rely on to bring ideas to life.</p></div>
+        <div class="skills">
+          <div class="skill"><div class="skill-icon">R</div><strong>Roblox</strong><small>Lua / Studio</small></div>
+          <div class="skill"><div class="skill-icon">U</div><strong>Unity</strong><small>C# / Game Dev</small></div>
+          <div class="skill"><div class="skill-icon">&lt;/&gt;</div><strong>Web</strong><small>HTML / CSS / JS</small></div>
+          <div class="skill"><div class="skill-icon">Py</div><strong>Python</strong><small>Bots / API</small></div>
+          <div class="skill"><div class="skill-icon">Git</div><strong>GitHub</strong><small>Version control</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head"><div><div class="section-label">Profile</div><h2>About Me</h2></div></div>
+        <div class="about-grid">
+          <div class="about-card">
+            <h3>Passion for building</h3>
+            <p>I am a developer who thrives on turning complex ideas into functional, elegant digital experiences. Whether it's crafting immersive Roblox mechanics, optimizing Unity physics, or building responsive web interfaces, I focus on clean code and user-centric design.</p>
+            <p>Always learning, always optimizing.</p>
+          </div>
+          <div class="about-card">
+            <div class="about-stats">
+              <div class="stat-item"><strong>3+</strong><span>Years Experience</span></div>
+              <div class="stat-item"><strong>10+</strong><span>Projects Completed</span></div>
+              <div class="stat-item"><strong>Fluent</strong><span>Lua, C#, Python</span></div>
+              <div class="stat-item"><strong>Focus</strong><span>Games & Automation</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 GoodKubiceek. Built with HTML & CSS.</footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section').forEach(section => {
+        if (pageYOffset >= section.offsetTop - 250) current = section.getAttribute('id');
+      });
+      document.querySelectorAll('nav a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
